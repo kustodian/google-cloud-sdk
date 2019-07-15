@@ -872,7 +872,7 @@ class BaseSSHCLIHelper(BaseSSHHelper):
     # Exit codes 255 and 1 are taken by OpenSSH and PuTTY.
     # 23 chosen by fair dice roll.
     remote_command = [
-        '[ `curl "{}" -H "Metadata-Flavor: Google" -q` = {} ] || exit 23'
+        '[ `curl -s "{}" -H "Metadata-Flavor: Google" -q` = {} ] || exit 23'
         .format(metadata_id_url, instance_id)]
     cmd = ssh.SSHCommand(remote, identity_file=identity_file,
                          options=options, remote_command=remote_command)
